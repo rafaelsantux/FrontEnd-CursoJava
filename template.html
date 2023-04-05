@@ -16,31 +16,33 @@
 <body>
 
     <!-- WRAP -->
-    <div id="Wrap">
-
-        <a href="top"></a>
+    <div id="wrap">
+        
+        <!-- Âncora para o topo da página → #top -->
+        <a id="top"></a>
 
         <!-- Cabeçalho-->
         <header>
             <!-- Usando uma imagem como logotipo. -->
-            
-            <!--<a href="/"><img src="/img/logo.alfa.png" alt="Logotipo de FrontEnd."></a> -->
-            
+            <!-- <a href="/"><img src="/img/logo.alfa.png" alt="Logotipo de FrontEnd."></a> -->
             <!-- Usando Font Awesome como logotipo. -->
             <a href="/"><i class="fa-solid fa-laptop-code fa-fw"></i></a>
-            <h1>
-                FrontEnd
-                <small>Programando para o futuro</small>
-            </h1>
+            <h1>FrontEnd<small>Programando para o futuro</small></h1>
         </header>
-
-
-        <!-- Menu-->
+            
+            <!-- Menu-->
         <nav>
+            <!-- Item de menu -->
             <a href="/">
+                
+                <!-- Ícone do item do menu -->
                 <i class="fa-solid fa-house-user fa-fw"></i>
+                
+                <!-- Label do item do menu -->
                 <span>Início</span>
             </a>
+              
+            <!-- Os outros itens seguem o mesmo padrão acima -->
             <a href="/contacts">
                 <i class="fa-solid fa-headset fa-fw"></i>
                 <span>Contatos</span>
@@ -50,7 +52,10 @@
                 <span>Sobre</span>
             </a>
 
-
+            <a href="/profile">
+                <i class="fa-solid fa-user fa-fw"></i>
+                <span>Login</span>
+            </a>
         </nav>
 
         <!-- Conteúdo principal-->
@@ -63,14 +68,17 @@
                     adipisicing elit. Laborum facere excepturi repellat
                     obcaecati vero, pariatur id laboriosam debitis officia
                     atque, eveniet fugit adipisci ipsam ad.
-                    Eveniet modi ipsa nesciunt nam?</p>
+                    Eveniet modi ipsa nesciunt nam?
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam doloribus eum nostrum! Rerum corrupti ad asperiores! Ut, non nostrum. Excepturi enim, eum neque alias accusantium autem nulla natus suscipit distinctio?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, pariatur autem? Laboriosam eum incidunt nemo illum, reiciendis architecto praesentium, deserunt id molestiae ullam vitae soluta quisquam! Vero impedit molestias voluptatum!
+                </p>
             </article>
-            <!-- Conteudo adicional-->
+            
+            <!-- Conteúdo adicional / Barra lateral -->
             <aside>
                 <h3>Titulo Lateral</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Magni ipsa eius illo nam eos molestias,
-                    labore rerum autem doloribus quam quod corrupti m</p>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aperiam, dolore nam deleniti, voluptas iure architecto quod nemo aspernatur eum natus molestiae vel nostrum qui id veritatis at iste repellendus.</p>
+                    
             </aside>
 
 
@@ -95,7 +103,7 @@
             <!-- Segunda linha-->
             <div class="footer-bottom">
 
-                <div class="footer-bottom-left">
+                <div>
                     <h4>Redes Sociais</h4>
                     <ul>
                         <li><a href="https://facebook.com/FrontEnd" target="_blank">
@@ -116,15 +124,21 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+            </div>
 
-                <div class="fotter-bottom-right">
+            <div>
                     <h4>Links Rapidos</h4>
                     <ul>
                         <li>
                             <a href="/about">
                                 <i class="fa-solid fa-file-code fa-fw"></i>
                                 <span>Quem somos?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about">
+                                <i class="fa-solid fa-file-code fa-fw"></i>
+                                <span>Sobre o site</span>
                             </a>
                         </li>
                         <li>
@@ -138,15 +152,34 @@
 
             </div>
 
-
-
-
         </footer>
 
-
+        <hr class ="nbsp">
     </div>
     <!-- Fim do WRAP -->
 
+    <!-- Barrinha lateral com bugigangas. -->
+    <div id = "gadgets">
+        <span>X</span>
+        <ul>
+            <li>
+                <a href="https://facebook.com/FrontEnd" target="_blank">
+                    <i class="fa-brands fa-square-facebook fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/FrontEnd" target="_blank">
+                    <i class="fa-brands fa-square-twitter fa-fw"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/FrontEnd" target="_blank">
+                    <i class="fa-brands fa-square-github fa-fw"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Carga do JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="/index.js"></script>
 
