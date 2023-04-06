@@ -74,7 +74,7 @@ body {
     border-radius: .35rem;
     border: 1px dotted grey;
     display: flex;
-    align-items: center;
+    align-items:center;
 }
 
 #wrap>header a {
@@ -153,6 +153,7 @@ body {
     border-radius: .35rem;
     border: 1px dotted grey;
     flex-grow: 1;
+    padding: .5rem;
 }
 
 #wrap>main>aside {
@@ -160,6 +161,7 @@ body {
     margin-top: .5rem;
     border-radius: .35rem;
     border: 1px dotted grey;
+    padding: .5rem;
 }
 
 /* Rodapé */
@@ -231,6 +233,20 @@ body {
 
 @media screen and (min-width: 575px) {
     
+
+    /* Cabeçalho */
+
+#wrap>header a {
+    letter-spacing: .1rem;
+    font-size: 2rem;
+}
+
+#wrap>header a small {
+    font-size: 1rem;
+    letter-spacing: .06rem;
+}
+
+
     /* Menu Principal */
     
 #wrap>nav {
@@ -291,4 +307,8 @@ body {
 #gadgets a {
     color: rgb(255, 255, 255);
     font-size: 2rem;
+}
+
+#gadgets a:hover{
+    color:rgba(5, 5, 5, 0.507);
 }
