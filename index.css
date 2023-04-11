@@ -78,7 +78,7 @@ body {
 }
 
 #wrap>header a {
-    font-size: 4rem;
+    font-size: 3rem;
     color: rgb(255, 143, 15);
     -webkit-text-stroke: .5px black;
     padding: 0.5rem 1rem 0.5rem 0.5rem;
@@ -92,21 +92,22 @@ body {
 #wrap>header h1 {
     margin: 0;
     text-align: center;
-    letter-spacing: .25rem;
+    letter-spacing: .1rem;
+    margin: 0;
     color: white;
 }
 
 #wrap>header h1 small {
     display: block;
+    font-size: .86rem;
     font-weight: normal;
-    font-size: .8rem;
     letter-spacing: normal;
 }
 
 /*  Menu principal */
 
 #wrap>nav {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.541);
     border: 1px dotted grey;
     border-radius: .35rem;
     margin: 0 .5rem .5rem .5rem;
@@ -121,6 +122,7 @@ body {
     padding: .65rem .75rem;
     color: #ddd;
     text-decoration: none;
+    transition: .2s;
     border-radius: .35rem;
 
 }
@@ -167,7 +169,7 @@ body {
 /* Rodapé */
 
 #wrap>footer {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.596);
     margin: .5rem;
     border-radius: .35rem;
     border: 1px dotted grey;
@@ -250,7 +252,7 @@ body {
     /* Menu Principal */
     
 #wrap>nav {
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #wrap>nav a :first-child {
     margin-right: 0;
@@ -259,11 +261,6 @@ body {
 #wrap>nav a {
     flex-direction: row;
 }
-
-#wrap>nav a:first-child {
-    margin-right: auto;
-}
-
 
 #wrap>nav a i {
     font-size: 1.2rem;

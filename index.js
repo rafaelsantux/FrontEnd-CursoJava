@@ -26,8 +26,6 @@ var app = {
     siteSlogan: 'Programando para o futuro',
 }
 
-
-
 /**
  * jQuery → Quando o documento estiver pronto, executa a função principal,
  * 'runApp()'.
@@ -61,7 +59,19 @@ function myApp() {
      * Posteriormente, esta chamada à "loadpage()" será otimizada para melhorar
      * o paradigma "SEO Friendly" do aplicativo.
      **/
-    loadpage('home')
+    //loadpage('home')
+
+     /**
+      * Obtém nome da página que está sendo acessada, do 'localStorage'.
+      * Estude '/404.html' para mais detalhes.
+      **/
+      const path = localStorage.path
+      if (path) {                         // Se cliente está acessando uma página específica...
+          delete localStorage.path        // Limpa o 'localStorage'.
+          loadpage(path);                 // Acessa a página solicitada.
+      } else {                            // Se não solicitou uma página específica...
+          loadpage('home');               // Carrega a página inicial.
+      }
 
     /**
      * jQuery → Monitora cliques em elementos "<a>" que, se ocorre, chama a função 
@@ -75,23 +85,51 @@ function myApp() {
  **/
 function routerLink() {
 
-    //Obtém o valor do atributo 'href' do elemento clicado.
+     /**
+     * Extrai o valor do atributo "href" do elemento clicado e armazena na 
+     * variável "href".
+     * 
+     * OBS: $(this) faz referência especificamente ao elemento que foi clicado.
+     * 
+     * Referências:
+     *  • https://api.jquery.com/attr/
+     *  • https://www.w3schools.com/jquery/jquery_syntax.asp
+     **/
     var href = $(this).attr('href').trim().toLowerCase()
- 
-    
-    // Detecta clique em links externos e âncoras(#).
- 
+  
+    /**
+     * Se clicou em um link externo (http://... OU https://...) ou em uma 
+     * âncora (#...),devolve o controle da página para o navegador (return true) 
+     * que fará o processamento normal.
+     * 
+     * OBS: Os carateres '||' (pipe pipe) significam a lógica 'OR' (OU) onde, se 
+     * apenas uma das expressões for verdadeira, todas as expressões serão 
+     * verdadeiras. Consulte as referências.
+     * 
+     * Referências:
+     *  • https://www.w3schools.com/js/js_if_else.asp
+     *  • https://www.w3schools.com/jsref/jsref_substr.asp
+     *  • https://www.w3schools.com/js/js_comparisons.asp
+     **/
     if(
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 1) == '#'
     ){
-    //Devolve o controle para o HTML.
+    
+        //Devolve o controle para o HTML.
         return true
     }
-
+    
+    /**
+     * Carrega a rota solicitada.
+     **/
     loadpage(href)    
-    //Bloqueia o funcionamento normal do link
+    
+    /**
+     * Encerra o processamento do link sem fazer mais nada. 'return false' 
+     * bloqueia a ação normal do navegador sobre um link.
+     **/
     return false
     
 }
@@ -233,19 +271,33 @@ function loadpage(page) {
  * Em cada arquivo "index.js" de cada página, inclua uma chamada para esta 
  * função, passando como parâmetro o título que deve aparecer.
  * 
- * Quando o parâmetro estiver vazio o titulo será:
- *     app.sitename - app.siteslogan
- * Quando o parametro for informado, o titulo será:
- *     app.sitename - parâmetro
+ * Quando o parâmetro estiver vazio (DEFAULT) o título será:
+ *  • app.sitename - app.siteslogan
+ * Quando o parâmetro for informado, o título será:
+ *  • app.sitename - parâmetro
  * 
  **/
 function changeTitle(title = '') {
 
+      /**
+     * Define o título padrão da página.
+     */
     let pageTitle = app.siteName + ' : '
 
+    /**
+     * Se não foi definido um título para a página, 
+     * usa o slogan.
+     **/
     if (title == '') pageTitle += app.siteSlogan
+    
+    /**
+     * Se foi definido um título, usa-o.
+     */
     else pageTitle += title
-
+    
+    /**
+     * Escreve o novo título na tag <title></title>.
+     */
     $('title').html(pageTitle)
 
 
