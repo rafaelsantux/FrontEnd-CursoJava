@@ -1,1 +1,65 @@
 /*  Folhas de estilo de contacts. */
+
+#cForm {
+    display: table;
+    margin:auto;
+    width: 100%;
+    max-width: 500px;
+
+}
+
+#cForm label {
+    display: block;
+    padding: 0 0 .25rem .25rem;
+
+}
+
+#cForm input, 
+#cForm textarea,
+#cForm button {
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: .3rem;
+}
+
+#cForm input, 
+#cForm textarea {
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+    padding: .4rem;
+    width: 100%;
+    background-color: rgba(250, 183, 183, 0.568);
+
+}
+#cForm textarea {
+    height: 6rem;
+    resize: vertical;
+}
+
+#cForm button {
+    padding: .5rem .1rem;
+    border: none;
+    background-image: linear-gradient(rgba(15, 71, 255, 0.993), rgba(15, 147, 255, 0.623));
+    color:white;
+    cursor: pointer;
+}
+
+#cForm button:hover {
+    background-image: linear-gradient(rgb(255, 143, 15), rgba(255, 143, 15, 0.623));
+}
+
+#cForm small {
+    color: grey;
+}
+
+#cForm input:valid, 
+#cForm textarea:valid {
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    background-color: rgb(232, 240, 254);
+}
+
+#cForm:invalid button {
+    background-image: linear-gradient(rgba(128, 128, 128, 0.774), rgb(102, 102, 102));
+    pointer-events: none;
+}
