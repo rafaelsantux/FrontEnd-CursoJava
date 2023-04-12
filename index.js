@@ -56,13 +56,20 @@ function myApp() {
      * necessário que erros 404 abram a página "index.html".
      **/
 
-    // Extrai a rota da página da URL e armazena em 'path'.
-    var path = window.location.pathname.split('/')[1]
+    // Verifica se o 'localStorage' contém uma rota.
+    if (localStorage.path == undefined) {
 
-    // Se 'path' é vazia, 'path' é a página inicial.
-    if (path == '') path = 'home'
+        // Se não contém, aponta a rota 'home'.
+        localStorage.path = 'home'
+    }
 
-    // Carrega a página solicitada pela rota em 'path'.
+    // Armazena a rota obtida em 'path'.        
+    var path = localStorage.path
+
+    // Apaga o 'localStorage', liberando o recurso.
+    delete localStorage.path
+
+    // Carrega a página solicitada pela rota.
     loadpage(path)
 
     /**
@@ -70,7 +77,6 @@ function myApp() {
      * routerLink().
      **/
     $(document).on('click', 'a', routerLink)
-
 }
 
 /**
