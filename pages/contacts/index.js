@@ -13,7 +13,7 @@ function myContacts() {
     changeTitle('Faça contato')
 
     /**
-     * Observer do formulário de contatos.
+     * Promiser do formulário de contatos.
      * Quando o formulário for enviado (onsubmit), executa a função
      * sendContact().
      */
@@ -52,9 +52,9 @@ function sendContact(ev) {
             if (data.status == 'success') {
                 var firstName = formJSON.name.split(' ')[0]
                 feedback = `
-                    <h3>Olá ${firstName}!</h3>
+                    <h3>Olá, ${firstName}!</h3>
                     <p>Seu contato foi enviado com sucesso.</p>
-                    <p>Obrigado...</p>
+                    <p>Obrigado!</p>
                 `
             } else {
                 feedback = `
@@ -65,7 +65,6 @@ function sendContact(ev) {
             }
             $('#cForm').html(feedback)
         })
-
-    delete formJSON
+    
     return false
 }

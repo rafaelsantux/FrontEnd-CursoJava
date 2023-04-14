@@ -45,8 +45,8 @@ server.use((req, res, next) => {
    // Inclui a data no 'body' da requisição.
    req.body.date = sysdate
 
-   /**
-    * Renderiza a 'view' do json-server.
+     
+    /* Renderiza a 'view' do json-server.
     * Isso altera a saída padrão do json-server para customizá-la.
     **/
    router.render = (req, res, next) => {

@@ -21,8 +21,9 @@
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
  var app = {
-    siteName: 'Futikeiros',
-    siteSlogan: 'Programando para o futuro'
+    siteName: 'FrontEnd',
+    siteSlogan: 'Programando para o futuro',
+    apiContactsURL: 'http://localhost:3000/contacts'
 }
 
 /**
@@ -53,7 +54,7 @@ function myApp() {
     /**
      * IMPORTANTE!
      * Para que o roteamento funcione corretamente no "live server", é 
-     * necessário que erros 404 abram a página "index.html".
+     * necessário que erros 404 abram a página "404.html".
      **/
 
     // Verifica se o 'localStorage' contém uma rota.
@@ -77,6 +78,7 @@ function myApp() {
      * routerLink().
      **/
     $(document).on('click', 'a', routerLink)
+
 }
 
 /**
@@ -113,6 +115,8 @@ function routerLink() {
     if (
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
+        href.substring(0, 4) == 'tel:' ||
+        href.substring(0, 7) == 'mailto:' ||
         href.substring(0, 1) == '#'
     )
         // Devolve o controle para o HTML.
