@@ -24,3 +24,21 @@
 .art-author h5 {
     margin-top: .25rem;
 }
+
+#dateAuthor {
+        
+    margin-bottom: 1rem;
+    padding: .25rem .5rem;
+    background-color: rgb(202, 202, 202);
+    border-radius: .25rem;
+}
+
+@media screen and (min-width: 480px){
+    
+    #dateAuthor {
+        flex-direction: row;
+    }
+}
+
+
+    

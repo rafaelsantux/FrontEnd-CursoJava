@@ -11,39 +11,13 @@ const firebaseConfig = {
     appId: "1:556068870453:web:75bc90b3f891a97464147c"
   };
 
-  export { firebaseConfig }
-  // Importa o "core" do Firebase.
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-  
-  //Importa o Authentication.
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 
+// Incializa o Firebase
+firebase.initializeApp(firebaseConfig);
 
-  // Initializa o Firebase.
-  const fbapp = initializeApp(firebaseConfig);
+// Incializa o Firebase Authentication
+const auth = firebase.auth();
 
-  //Especifica o provedor de atutenticação.
-  const provider = new GoogleAuthProvider();
-
-  const auth = getAuth();
-
-signInWithPopup (auth, provider)
-
-  var user;
-
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        sessionStorage.userData = JSON.stringify({
-            name: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-            uid: user.uid
-        })
-    } else {
-        delete sessionStorage.userData
-    }
-});
-
-
-
+// Define o provedor de autenticação
+var provider = new firebase.auth.GoogleAuthProvider();
   

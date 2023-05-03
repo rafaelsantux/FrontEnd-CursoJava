@@ -38,7 +38,7 @@ a {
 }
 
 a:hover {
-    color:rgb(255, 145, 0);
+    color: rgb(255, 145, 0);
     text-decoration: underline;
 }
 
@@ -69,12 +69,12 @@ body {
 /* Renderiza cabeçalho. */
 
 #wrap>header {
-    background-color: #32348b7e;
+    background-color: #0004df7e;
     margin: 0.5rem;
     border-radius: .35rem;
     border: 1px dotted grey;
     display: flex;
-    align-items:center;
+    align-items: center;
 }
 
 #wrap>header a {
@@ -128,13 +128,23 @@ body {
 #wrap>nav a:first-child {
     margin-right: auto;
 }
+
 #wrap>nav a:hover {
     background-color: #3f3f3f;
-    color:#fff;
+    color: #fff;
 }
+
 #wrap>nav a i {
     font-size: 2rem;
     margin-bottom: .4rem;
+}
+
+#wrap>nav a img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .4rem;
+    border-radius: 50%;
 }
 
 /* Conteúdo */
@@ -191,7 +201,7 @@ body {
     padding: .25rem;
 }
 
-/* Linha inferior do rodapé. */ 
+/* Linha inferior do rodapé. */
 
 .footer-bottom h4 {
     margin: .5rem 0;
@@ -202,67 +212,88 @@ body {
     justify-content: space-around;
     color: #ddd;
 }
+
 .footer-bottom ul {
     list-style: none;
     padding: 0;
     line-height: 1.5;
-    }
+}
 
 .footer-bottom a {
-        color: #ddd;
- }
+    color: #ddd;
+}
 
 .footer-bottom a:hover {
     color: rgb(255, 143, 15);
     text-decoration: none;
 }
-    
+
 /*  Rack para mostrar margem inferior em dispositivos mobile */
 
 .nbsp {
-        height: .1px;
-        margin: 0;
-        border: 1px solid transparent;
+    border: .25rem solid transparent;
+    height: .1px;
+    margin: 0;  
 }
 
 /***********************/
 /* Em larguras maiores */
 /***********************/
 
-@media screen and (min-width: 575px) {
-    
+@media screen and (min-width: 480px) {
+
 
     /* Cabeçalho */
 
-#wrap>header a {
-    letter-spacing: .1rem;
-    font-size: 2rem;
-}
+    
+    #wrap>header a {
+        font-size: 4rem;
+    }
 
-#wrap>header a small {
-    font-size: 1rem;
-    letter-spacing: .06rem;
-}
+    #wrap>header h1 {
+        font-size: 2rem;
+        letter-spacing: .1rem;        
+    }
 
+    #wrap>header h1 small {
+        font-size: 1rem;
+        letter-spacing: .06rem;
+    }
 
     /* Menu Principal */
-    
-#wrap>nav {
-    justify-content: space-around;
-}
-#wrap>nav a :first-child {
-    margin-right: 0;
-}
 
-#wrap>nav a {
-    flex-direction: row;
-}
+    #wrap>nav {
+        justify-content: space-around;
+    }
 
-#wrap>nav a i {
-    font-size: 1.2rem;
-    margin-bottom: 0;
-    margin-right: .5rem;
-}
+    #wrap>nav a :first-child {
+        margin-right: 0;
+    }
+
+    #wrap>nav a {
+        flex-direction: row;
+    }
+
+    #wrap>nav a i {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+    }
+
+    #wrap>nav a img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-bottom: 0;
+        margin-right: .5rem;
+    }
+
+     /******************/
+    /* Rodapé do tema */
+    /******************/
+
+    .footer-bottom ul {
+        padding-left: 1rem;
+    }
 
 }
 
@@ -271,15 +302,14 @@ body {
     #wrap>main {
         flex-direction: row;
     }
-    
+
     #wrap>main>aside {
-        margin-top: 0;
         margin-left: .5rem;
-        margin-right: .13rem;
-        min-width: 220px;
+        margin-top: 0;
         max-width: 220px;
+        min-width: 220px;
     }
-    
+
 }
 
 #gadgets {
@@ -303,6 +333,6 @@ body {
     font-size: 2rem;
 }
 
-#gadgets a:hover{
-    color:rgba(5, 5, 5, 0.507);
+#gadgets a:hover {
+    color: rgba(5, 5, 5, 0.507);
 }
