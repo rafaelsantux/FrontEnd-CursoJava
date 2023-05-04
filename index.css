@@ -1,338 +1,360 @@
-/*
+/**
  * Folhas de estilo do template do site.
- * By Rafael Santos
- */
+ **/
 
-/* Importa algumas bibliotecas externas. */
+/******************************************************************/
+/* Importa algumas bibliotecas externas para agilizar o trabalho. */
+/******************************************************************/
 
-/* Fonte Roboto do "Google Fonts". */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/**
+ * Fonte Roboto do "Google Fonts".
+ * Referências: https://fonts.google.com/
+ **/
+ @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-/* Font Awesome → Ícones e Glyphicons. */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-
-/* Normlize → Padroniza a view do CSS entre navegadores. */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-
-/* RESET - Normalize */
-
-* {
-    box-sizing: border-box;
-    outline: none;
-}
-
-html,
-body {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    /* Fonte padrão da página. */
-    font-family: Roboto, sans-serif;
-    /* Define a unidade responsiva 'rem', onde 1rem = 16px. */
-    font-size: 16px;
-}
-
-a {
-    color: steelblue;
-    text-decoration: none;
-}
-
-a:hover {
-    color: rgb(255, 145, 0);
-    text-decoration: underline;
-}
-
-/* Define o fundo padrão da página. */
-
-body {
-    /* Fundo */
-    background-attachment: fixed;
-    background-color: rgb(0, 0, 89);
-    background-image: url('/img/background01.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/* Limita e centraliza a página usando 'wrap'. */
-
-#wrap {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Renderiza cabeçalho. */
-
-#wrap>header {
-    background-color: #0004df7e;
-    margin: 0.5rem;
-    border-radius: .35rem;
-    border: 1px dotted grey;
-    display: flex;
-    align-items: center;
-}
-
-#wrap>header a {
-    font-size: 3rem;
-    color: rgb(255, 143, 15);
-    -webkit-text-stroke: .5px black;
-    padding: 0.5rem 1rem 0.5rem 0.5rem;
-    text-decoration: none;
-}
-
-#wrap>header i {
-    display: block;
-}
-
-#wrap>header h1 {
-    margin: 0;
-    text-align: center;
-    letter-spacing: .1rem;
-    margin: 0;
-    color: white;
-}
-
-#wrap>header h1 small {
-    display: block;
-    font-size: .86rem;
-    font-weight: normal;
-    letter-spacing: normal;
-}
-
-/* Menu principal */
-#wrap>nav {
-    background-color: rgba(0, 0, 0, .7);
-    border: 1px dotted #808080;
-    border-radius: .35rem;
-    margin: 0 .5rem .5rem .5rem;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#wrap>nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: .65rem .75rem;
-    color: #ddd;
-    text-decoration: none;
-    border-radius: .35rem;
-    transition: .2s;
-}
-
-#wrap>nav a:first-child {
-    margin-right: auto;
-}
-
-#wrap>nav a:hover {
-    background-color: #3f3f3f;
-    color: #fff;
-}
-
-#wrap>nav a i {
-    font-size: 2rem;
-    margin-bottom: .4rem;
-}
-
-#wrap>nav a img {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    margin-bottom: .4rem;
-    border-radius: 50%;
-}
-
-/* Conteúdo */
-
-#wrap>main {
-    display: flex;
-    margin: 0 .5rem;
-    flex-grow: 1;
-    flex-direction: column;
-}
-
-#wrap>main>article {
-    background-color: white;
-    border-radius: .35rem;
-    border: 1px dotted grey;
-    flex-grow: 1;
-    padding: .5rem;
-}
-
-#wrap>main>aside {
-    background-color: rgb(255, 224, 188);
-    margin-top: .5rem;
-    border-radius: .35rem;
-    border: 1px dotted grey;
-    padding: .5rem;
-}
-
-/* Rodapé */
-
-#wrap>footer {
-    background-color: rgba(0, 0, 0, 0.596);
-    margin: .5rem;
-    border-radius: .35rem;
-    border: 1px dotted grey;
-}
-
-/* Linha superior do rodapé. */
-
-.footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px dotted grey
-}
-
-.footer-top div {
-    color: white;
-    text-align: center;
-}
-
-.footer-top a {
-    color: #ddd;
-    font-size: 1 .5rem;
-    padding: .25rem;
-}
-
-/* Linha inferior do rodapé. */
-
-.footer-bottom h4 {
-    margin: .5rem 0;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-around;
-    color: #ddd;
-}
-
-.footer-bottom ul {
-    list-style: none;
-    padding: 0;
-    line-height: 1.5;
-}
-
-.footer-bottom a {
-    color: #ddd;
-}
-
-.footer-bottom a:hover {
-    color: rgb(255, 143, 15);
-    text-decoration: none;
-}
-
-/*  Rack para mostrar margem inferior em dispositivos mobile */
-
-.nbsp {
-    border: .25rem solid transparent;
-    height: .1px;
-    margin: 0;  
-}
-
-/***********************/
-/* Em larguras maiores */
-/***********************/
-
-@media screen and (min-width: 480px) {
-
-
-    /* Cabeçalho */
-
-    
-    #wrap>header a {
-        font-size: 4rem;
-    }
-
-    #wrap>header h1 {
-        font-size: 2rem;
-        letter-spacing: .1rem;        
-    }
-
-    #wrap>header h1 small {
-        font-size: 1rem;
-        letter-spacing: .06rem;
-    }
-
-    /* Menu Principal */
-
-    #wrap>nav {
-        justify-content: space-around;
-    }
-
-    #wrap>nav a :first-child {
-        margin-right: 0;
-    }
-
-    #wrap>nav a {
-        flex-direction: row;
-    }
-
-    #wrap>nav a i {
-        font-size: 1.2rem;
-        margin-bottom: 0;
-        margin-right: .5rem;
-    }
-
-    #wrap>nav a img {
-        width: 1.2rem;
-        height: 1.2rem;
-        margin-bottom: 0;
-        margin-right: .5rem;
-    }
-
+ /**
+  * Font Awesome → Ícones e Glyphicons. 
+  * Referências: https://fontawesome.com/
+  */
+ @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+ 
+ /**
+  * Normalize → CSS que padroniza a view entre diversos navegadores.
+  * Referências: 
+  *  • https://github.com/necolas/normalize.css
+  *  • https://necolas.github.io/normalize.css/
+  */
+ @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+ 
+ /**********************************************/
+ /* Configuração inicial do CSS do aplicativo. */
+ /**********************************************/
+ 
+ /* Todos os elementos */
+ * {
+     box-sizing: border-box;
+     outline: none;
+     transition: .15s;
+ }
+ 
+ /* Elementos raiz */
+ html,
+ body {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     /* Define a fonte padrão da página. */
+     font-family: Roboto, sans-serif;
+     /* Define a unidade responsiva 'rem', onde 1rem = 16px. */
+     font-size: 16px;
+ }
+ 
+ /* Links em geral */
+ 
+ a {
+     color: #4682b4;
+     text-decoration: none;
+ }
+ 
+ a:hover {
+     color: #ff4500;
+     text-decoration: underline;
+ }
+ 
+ /* Define o fundo padrão da página. */
+ 
+ body {
+     background-attachment: fixed;
+     background-color: #000059;
+     background-image: url('img/background01.jpg');
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+ 
+ /* Contêiner que limita e centraliza a página usando o método 'wrap'. */
+ 
+ #wrap {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     margin: auto;
+     position: relative;
+     width: 100%;
+     /* Largura maxima do conteúdo da página. */
+     max-width: 1054px;
+ }
+ 
+ /*********************/
+ /* Cabeçalho do tema */
+ /*********************/
+ 
+ #wrap>header {
+     align-items: center;
+     background-color: rgba(17, 45, 68, .7);
+     border-radius: .35rem;
+     border: 1px dotted #808080;
+     display: flex;
+     margin: 0.5rem;
+ }
+ 
+ #wrap>header a {
+     -webkit-text-stroke: .5px #ffffff;
+     color: #ffa500;
+     font-size: 3rem;
+     padding: 0.5rem 1rem 0.5rem 0.5rem;
+     text-decoration: none;
+ }
+ 
+ #wrap>header i {
+     display: block;
+ }
+ 
+ #wrap>header h1 {
+     color: #ffffff;
+     font-size: 1.5rem;
+     letter-spacing: .1rem;
+     margin: 0;
+     text-align: center;
+ }
+ 
+ #wrap>header h1 small {
+     display: block;
+     font-size: .86rem;
+     font-weight: normal;
+     letter-spacing: normal;
+ }
+ 
+ /**************************/
+ /* Menu principal do tema */
+ /**************************/
+ 
+ #wrap>nav {
+     background-color: rgba(0, 0, 0, .7);
+     border: 1px dotted #808080;
+     border-radius: .35rem;
+     display: flex;
+     justify-content: flex-end;
+     margin: 0 .5rem .5rem .5rem;
+ }
+ 
+ #wrap>nav a {
+     align-items: center;
+     border-radius: .35rem;
+     color: #ddd;
+     display: flex;
+     flex-direction: column;
+     padding: .65rem .75rem;
+     text-decoration: none;
+ }
+ 
+ #wrap>nav a:first-child {
+     margin-right: auto;
+ }
+ 
+ #wrap>nav a:hover {
+     background-color: #3f3f3f;
+     color: #fff;
+ }
+ 
+ #wrap>nav a i {
+     font-size: 2rem;
+     margin-bottom: .4rem;
+ }
+ 
+ #wrap>nav a img {
+     display: block;
+     width: 2rem;
+     height: 2rem;
+     margin-bottom: .4rem;
+     border-radius: 50%;
+ }
+ 
+ /************/
+ /* Conteúdo */
+ /************/
+ 
+ /**
+  * IMPORTANTE!
+  * Estamos em um aplicativo SPA que, além de definir este CSS para o tema, 
+  * também define um CSS para cada página.
+  * Consulte a pasta '/pages' para mais detalhes.
+  **/
+ 
+ #wrap>main {
+     display: flex;
+     flex-direction: column;
+     flex-grow: 1;
+     margin: 0 .5rem;
+ }
+ 
+ #wrap>main>article {
+     background-color: rgba(255, 255, 255, .9);
+     border-radius: .35rem;
+     border: 1px dotted #808080;
+     flex-grow: 1;
+     padding: 0 1rem;
+ }
+ 
+ #wrap>main>aside {
+     background-color: rgba(255, 237, 205, .9);
+     border-radius: .35rem;
+     border: 1px dotted #808080;
+     margin-top: .5rem;
+     padding: 0 1rem;
+ }
+ 
+ /******************/
+ /* Rodapé do tema */
+ /******************/
+ 
+ #wrap>footer {
+     background-color: rgba(0, 0, 0, 0.7);
+     border-radius: .35rem;
+     border: 1px dotted grey;
+     color: #ddd;
+     margin: .5rem .5rem 0 .5rem;
+ }
+ 
+ #wrap>footer a {
+     color: #ddd;
+     text-decoration: none;
+ }
+ 
+ #wrap>footer a:hover {
+     color: #ffa500;
+     text-decoration: none;
+ }
+ 
+ /* Linha superior do rodapé. */
+ 
+ .footer-top {
+     align-items: center;
+     border-bottom: 1px dotted #808080;
+     display: flex;
+     justify-content: space-between;
+ }
+ 
+ .footer-top div {
+     text-align: center;
+ }
+ 
+ .footer-top a {
+     font-size: 1.5rem;
+     padding: .4rem;
+ }
+ 
+ /* Linha inferior do rodapé. */
+ 
+ .footer-bottom {
+     display: flex;
+     justify-content: space-around;
+ }
+ 
+ .footer-bottom h4 {
+     margin: 1rem 0 0 0;
+ }
+ 
+ .footer-bottom ul {
+     line-height: 1.7;
+     list-style: none;
+     padding: 0;
+ }
+ 
+ /*****************/
+ /* Outras coisas */
+ /*****************/
+ 
+ /* Rack para mostrar margem inferior em dispositivos mobile. */
+ 
+ .nbsp {
+     border: .25rem solid transparent;
+     height: .1px;
+     margin: 0;    
+ }
+ 
+ /**************************************************/
+ /* Responsividade → Em larguras maiores que 480px */
+ /**************************************************/
+ 
+ @media screen and (min-width: 480px) {
+ 
+     /*********************/
+     /* Cabeçalho do tema */
+     /*********************/
+ 
+     #wrap>header a {
+         font-size: 4rem;
+     }
+ 
+     #wrap>header h1 {
+         font-size: 2rem;
+         letter-spacing: .1rem;        
+     }
+ 
+     #wrap>header h1 small {
+         font-size: 1rem;
+         letter-spacing: .06rem;
+     }
+ 
+     /**************************/
+     /* Menu principal do tema */
+     /**************************/
+ 
+     #wrap>nav {
+         justify-content: space-around;
+     }
+ 
+     #wrap>nav a:first-child {
+         margin-right: 0;
+     }
+ 
+     #wrap>nav a {
+         flex-direction: row;
+     }
+ 
+     #wrap>nav a i {
+         font-size: 1.2rem;
+         margin-bottom: 0;
+         margin-right: .5rem;
+     }
+ 
+     #wrap>nav a img {
+         width: 1.2rem;
+         height: 1.2rem;
+         margin-bottom: 0;
+         margin-right: .5rem;
+     }
+ 
      /******************/
-    /* Rodapé do tema */
-    /******************/
-
-    .footer-bottom ul {
-        padding-left: 1rem;
-    }
-
-}
-
-@media screen and (min-width: 768px) {
-
-    #wrap>main {
-        flex-direction: row;
-    }
-
-    #wrap>main>aside {
-        margin-left: .5rem;
-        margin-top: 0;
-        max-width: 220px;
-        min-width: 220px;
-    }
-
-}
-
-#gadgets {
-    background-color: rgba(119, 136, 153, 0.705);
-    position: fixed;
-    z-index: 100;
-    right: 0;
-    top: 100px;
-    border-radius: .35rem 0 0 .35rem;
-    display: none
-}
-
-#gadgets ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-#gadgets a {
-    color: rgb(255, 255, 255);
-    font-size: 2rem;
-}
-
-#gadgets a:hover {
-    color: rgba(5, 5, 5, 0.507);
-}
+     /* Rodapé do tema */
+     /******************/
+ 
+     .footer-bottom ul {
+         padding-left: 1rem;
+     }
+ 
+ }
+ 
+ /**************************************************/
+ /* Responsividade → Em larguras maiores que 768px */
+ /**************************************************/
+ 
+ @media screen and (min-width: 768px) {
+ 
+     /************/
+     /* Conteúdo */
+     /************/
+ 
+     #wrap>main {
+         flex-direction: row;
+     }
+ 
+     #wrap>main>aside {
+         margin-left: .5rem;
+         margin-top: 0;
+         max-width: 220px;
+         min-width: 220px;
+     }
+ 
+ }
