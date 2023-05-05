@@ -1,4 +1,3 @@
-/* Folhas de estilo de home. */
 .autor-art-list {
     padding: 0;
     padding-left: 1rem;
@@ -78,6 +77,23 @@
     margin: .75rem 1rem 1.5rem 1rem;
 }
 
+.sep {
+    border: none;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid gray;
+    height: 1px;
+}
+
+.art-item {
+    color: steelblue;
+    cursor: pointer;
+}
+
+.art-item:hover {
+    color: orangered;
+    text-decoration: underline;
+}
+
 @media screen and (min-width: 480px) {
 
     .dateAuthor {
@@ -88,4 +104,3 @@
         width: 90%;
     }
 }
-    
