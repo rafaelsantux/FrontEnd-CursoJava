@@ -1,3 +1,4 @@
+
 /**
  * 
  * JavaScript do aplicativo.
@@ -20,16 +21,11 @@
  * Algumas configurações do aplicativo.
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
-var apiBaseURL = 'http://localhost:3000/'
-var app = {
+ const app = {
     siteName: 'FrontEndeiros',
     siteSlogan: 'Programando para o futuro',
-    apiContactsURL: apiBaseURL + 'contacts',
-    apiArticlesURL: apiBaseURL + 'articles?_sort=date&_order=desc&status=on',
-    apiArticleURL: apiBaseURL + 'articles/',
-    apiUserURL: apiBaseURL + 'users/',
-    apiCommentURL: apiBaseURL + 'comments?_sort=date&_order=desc&status=on',
-    apiCommentPostURL: apiBaseURL + 'comments'
+    // apiBaseURL: 'http://localhost:3000/'
+    apiBaseURL: 'https://frontendeirosapi.onrender.com/'
 }
 
 /**
@@ -56,6 +52,12 @@ $(document).ready(myApp)
  *  • https://www.w3schools.com/js/js_functions.asp
  **/
 function myApp() {
+
+    onstorage = popUpOpen
+
+    // Aviso de cookies → Exibir aviso.
+    if (cookie.get('acceptCookies') == 'on') $('#aboutCookies').hide()
+    else $('#aboutCookies').show()
 
     // Monitora status de autenticação do usuário
     firebase.auth().onAuthStateChanged((user) => {
@@ -90,7 +92,7 @@ function myApp() {
     }
 
     // Armazena a rota obtida em 'path'.        
-    var path = sessionStorage.path
+    path = sessionStorage.path
 
     // Apaga o 'localStorage', liberando o recurso.
     delete sessionStorage.path
@@ -99,18 +101,46 @@ function myApp() {
     loadpage(path)
 
     /**
-     * jQuery → Monitora cliques em elementos '<a>' que , se ocorre, chama a função 
+     * jQuery → Monitora cliques em elementos '<a>' que, se ocorre, chama a função 
      * routerLink().
      **/
     $(document).on('click', 'a', routerLink)
+
+    /**
+     * Quando clicar em um artigo.
+     **/
+    $(document).on('click', '.article', loadArticle)
+
+    /**
+     * Aviso de cookies → Políticas de privacidade.
+     **/
+    $('#policies').click(() => {
+        loadpage('policies')
+    })
+
+    /**
+     * Aviso de cookies → Aceito.
+     **/
+    $('#accept').click(() => {
+        cookie.set('acceptCookies', 'on', 365)
+        $('#aboutCookies').hide()
+    })
 
 }
 
 // Faz login do usuário usando o Firebase Authentication
 function fbLogin() {
     firebase.auth().signInWithPopup(provider)
-        .then(() => {
-            loadpage('home')
+        .then((user) => {
+            popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
+            loadpage(location.pathname.split('/')[1])
+        })
+        .catch((error) => {
+            try {
+                popUp({ type: 'error', text: 'Ooops! Popups estão bloqueados!<br>Por favor, libere-os!' })
+            } catch (e) {
+                alert('Ooops! Popups estão bloqueados!\nPor favor, libere-os!')
+            }
         })
 }
 
@@ -304,28 +334,10 @@ function loadpage(page, updateURL = true) {
  * 
  **/
 function changeTitle(title = '') {
-
-    /**
-     * Define o título padrão da página.
-     */
     let pageTitle = app.siteName + ' - '
-
-    /**
-     * Se não foi definido um título para a página, 
-     * usa o slogan.
-     **/
     if (title == '') pageTitle += app.siteSlogan
-
-    /**
-     * Se foi definido um título, usa-o.
-     */
     else pageTitle += title
-
-    /**
-     * Escreve o novo título na tag <title></title>.
-     */
     $('title').html(pageTitle)
-
 }
 
 /**
@@ -338,7 +350,7 @@ function getAge(sysDate) {
     const tMonth = today.getMonth() + 1
     const tDay = today.getDate()
 
-    // Obtebdo partes da data original.
+    // Obtendo partes da data original.
     const parts = sysDate.split('-')
     const pYear = parts[0]
     const pMonth = parts[1]
@@ -348,9 +360,168 @@ function getAge(sysDate) {
     var age = tYear - pYear
 
     // Verificar o mês e o dia.
-    if (pMonth > tMonth) age--
-    else if (pMonth == tMonth && pDay > tDay) age--
+    if (pMonth > tMonth || pMonth == tMonth && pDay > tDay) age--
 
     // Retorna a idade.
     return age
+}
+
+/**
+ * Carrega o artigo completo.
+ **/
+function loadArticle() {
+    sessionStorage.article = $(this).attr('data-id')
+    loadpage('view')
+}
+
+/**
+ * Sanitiza um texto, removendo todas as tags HTML.
+ **/
+function stripHtml(html) {
+    let doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+}
+
+function popUp(params) {
+    const x = window.open('', 'popupWindow', 'width=1,height=1,left=10000');
+    x.localStorage.setItem('popUp', JSON.stringify(params));
+    x.close()
+}
+
+function popUpOpen() {
+
+    if (localStorage.popUp) {
+
+        const pData = JSON.parse(localStorage.popUp)
+        var pStyle = ''
+
+        switch (pData.type) {
+            case 'error': pStyle = 'background-color: #f00; color: #fff'; break
+            case 'alert': pStyle = 'background-color: #ff0; color: #000'; break
+            case 'success': pStyle = 'background-color: #0f0; color: #000'; break
+            default: pStyle = 'background-color: #fff; color: #000'
+        }
+
+        $('body').prepend(`
+        <div id="popup">
+            <div class="popup-body" style="${pStyle}">
+                <div class="popup-text">${pData.text}</div>
+                <div class="popup-close"><i class="fa-solid fa-xmark fa-fw"></i></div>
+            </div>
+        </div>
+        `)
+
+        $('.popup-close').click(popUpClose)
+        setTimeout(popUpClose, parseInt(pData.time) || 3000)
+
+    }
+}
+
+function popUpClose() {
+    delete localStorage.popUp
+    $('#popup').remove()
+}
+
+const myDate = {
+
+    sysToBr: (systemDate, time = true) => {
+        var parts = systemDate.split(' ')[0].split('-')
+        var out = `${parts[2]}/${parts[1]}/${parts[0]}`
+        if (time) out += ` às ${systemDate.split(' ')[1]}`
+        return out
+    },
+
+    jsToBr: (jsDate, time = true) => {
+        var theDate = new Date(jsDate)
+        var out = theDate.toLocaleDateString('pt-BR')
+        if (time) out += ` às ${theDate.toLocaleTimeString('pt-BR')}`
+        return out
+    },
+
+    todayToSys: () => {
+        const today = new Date()
+        return today.toISOString().replace('T', ' ').split('.')[0]
+    }
+
+}
+
+String.prototype.truncate = String.prototype.truncate ||
+    function (n, useWordBoundary) {
+        if (this.length <= n) { return this; }
+        const subString = this.slice(0, n - 1);
+        return (useWordBoundary
+            ? subString.slice(0, subString.lastIndexOf(" "))
+            : subString) + "&hellip;";
+    };
+
+Object.defineProperty(String.prototype, 'capitalize', {
+    value: function () {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    },
+    enumerable: false
+});
+
+const cookie = {
+    set: (cname, cvalue, exdays) => {
+        const d = new Date()
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
+        let expires = 'expires=' + d.toUTCString()
+        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+    },
+
+    get: (cname) => {
+        let name = cname + '='
+        let decodedCookie = decodeURIComponent(document.cookie)
+        let ca = decodedCookie.split(';')
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i]
+            while (c.charAt(0) == ' ') c = c.substring(1)
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length)
+        }
+        return ''
+    }
+}
+
+function getUsersTeam(limit) {
+    var htmlOut = ''
+    $.get(app.apiBaseURL + 'users', {
+        status: 'on',
+        _sort: 'name',
+        _order: 'asc'
+    })
+        .done((data) => {
+            data.forEach((item) => {
+                var type
+                switch (item.type) {
+                    case 'admin': type = 'Administrador(a)'; break
+                    case 'author': type = 'Autor(a)'; break
+                    case 'moderator': type = 'Moderador(a)'; break
+                    default: type = 'Colaborador(a)'
+                }
+
+                htmlOut += `
+                    <div class="userclick users-grid-item" data-id="${item.id}">
+                        <img src="${item.photo}" alt="${item.name}">
+                        <h4>${item.name.split(' ')[0]}</h4>
+                        <small>${item.name}</small>
+                        <ul>
+                            <li>${getAge(item.birth)} anos</li>
+                            <li>${type}
+                        </ul>
+                    </div>
+                `
+            })
+
+            $('#usersGrid').html(htmlOut)
+
+            $('.userclick').click(openProfile)
+
+        })
+
+}
+
+function openProfile() {
+    const userId = parseInt($(this).attr('data-id'))
+    sessionStorage.userId = userId
+    loadpage('aboutus')
 }
