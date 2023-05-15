@@ -20,7 +20,7 @@
  * Algumas configurações do aplicativo.
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
- var apiBaseURL = 'http://localhost:3000/'
+ var apiBaseURL = 'https://frontendux.onrender.com'
  var app = {
      siteName: 'FrontEndeiros',
      siteSlogan: 'Programando para o futuro',
