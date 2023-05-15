@@ -156,42 +156,103 @@ function routerLink() {
      * OBS: $(this) faz referência especificamente ao elemento que foi clicado.
      * 
      * Referências:
-     *  • https://api.jquery.com/attr/
-     *  • https://www.w3schools.com/jquery/jquery_syntax.asp
+     *  • https://www.w3schools.com/jsref/met_win_scrollto.asp
      **/
-    var href = $(this).attr('href').trim().toLowerCase()
+     window.scrollTo(0, 0);
+ 
+     /**
+      * Atualiza URL da página com o endereço da rota:
+      * Referências:
+      *  • https://developer.mozilla.org/en-US/docs/Web/API/History/pushState
+      **/
+     if (updateURL) window.history.pushState({}, '', page);
+ 
+ }
+ 
+ /**
+  * Muda o título da página → <title></title>
+  * 
+  * Instruções:
+  * Em cada arquivo "index.js" de cada página, inclua uma chamada para esta 
+  * função, passando como parâmetro o título que deve aparecer.
+  * 
+  * Quando o parâmetro estiver vazio (DEFAULT) o título será:
+  *  • app.sitename - app.siteslogan
+  * Quando o parâmetro for informado, o título será:
+  *  • app.sitename - parâmetro
+  * 
+  **/
+ function changeTitle(title = '') {
+ 
+     /**
+      * Define o título padrão da página.
+      */
+     let pageTitle = app.siteName + ' - '
+ 
+     /**
+      * Se não foi definido um título para a página, 
+      * usa o slogan.
+      **/
+     if (title == '') pageTitle += app.siteSlogan
+ 
+     /**
+      * Se foi definido um título, usa-o.
+      */
+     else pageTitle += title
+ 
+     /**
+      * Escreve o novo título na tag <title></title>.
+      */
+     $('title').html(pageTitle)
+ 
+ }
+ 
+ /**
+  * Calcula a idade com base na data (system date).
+  **/
+ function getAge(sysDate) {
+     // Obtendo partes da data atual.
+     const today = new Date()
+     const tYear = today.getFullYear()
+     const tMonth = today.getMonth() + 1
+     const tDay = today.getDate()
+ 
+     // Obtebdo partes da data original.
+     const parts = sysDate.split('-')
+     const pYear = parts[0]
+     const pMonth = parts[1]
+     const pDay = parts[2]
+ 
+     // Calcula a idade pelo ano.
+     var age = tYear - pYear
+ 
+     // Verificar o mês e o dia.
+     if (pMonth > tMonth) age--
+     else if (pMonth == tMonth && pDay > tDay) age--
+ 
+     // Retorna a idade.
+     return age
+ }
+ 
+ /**
+  * Carrega o artigo completo.
+  */
+ function loadArticle() {
+ 
+     // Obtém o id do artigo e armazena na sessão.
+     sessionStorage.article = $(this).attr('data-id')
+ 
+     // Carrega a página que exibe artigos → view.
+     loadpage('view')
+ }
 
-    /**
-     * Se clicou em um link externo (http://... OU https://...) ou em uma 
-     * âncora (#...),devolve o controle da página para o navegador (return true) 
-     * que fará o processamento normal.
-     * 
-     * OBS: Os carateres '||' (pipe pipe) significam a lógica 'OR' (OU) onde, se 
-     * apenas uma das expressões for verdadeira, todas as expressões serão 
-     * verdadeiras. Consulte as referências.
-     * 
-     * Referências:
-     *  • https://www.w3schools.com/js/js_if_else.asp
-     *  • https://www.w3schools.com/jsref/jsref_substr.asp
-     *  • https://www.w3schools.com/js/js_comparisons.asp
-     **/
-    if (
-        href.substring(0, 7) == 'http://' ||
-        href.substring(0, 8) == 'https://' ||
-        href.substring(0, 4) == 'tel:' ||
-        href.substring(0, 7) == 'mailto:' ||
-        href.substring(0, 1) == '#'
-    )
-        // Devolve o controle para o HTML.
-        return true
+ /**
+ * Sanitiza um texto, removendo todas as tags HTML.
+ */
+function stripHtml(html) {
 
-    /**
-     * Se clicou no link para 'login', executa a função de login.
-     */
-    if (href == 'login') {
-        fbLogin()
-        return false
-    }
+    // Armazena o texto no DOM na forma de string.
+    let doc = new DOMParser().parseFromString(html, 'text/html');
 
     /**
      * Carrega a rota solicitada.

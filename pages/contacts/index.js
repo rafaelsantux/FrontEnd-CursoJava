@@ -1,4 +1,3 @@
-
 // Executa 'myContacts()' quando o documento estiver pronto.
 $(document).ready(myContacts)
 

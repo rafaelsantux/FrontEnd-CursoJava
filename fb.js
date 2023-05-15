@@ -1,7 +1,9 @@
 /**
- * Configuração do Firebse para o site do Rafael.
- */
-
+ * Configurações so Firebase
+ * 
+ * IMPORTANTE!
+ * Troque os valores de 'firebaseConfig' pelos dados do SEU FIREBASE!
+ **/
 const firebaseConfig = {
     apiKey: "AIzaSyDazdPJL7bKcqwaPe7mOsvObakPV-FumtI",
     authDomain: "frontendeirosrf.firebaseapp.com",

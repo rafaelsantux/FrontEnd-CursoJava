@@ -33,7 +33,7 @@ function myHome() {
                             <p>${art.resume}</p>
                         </div>
                     </div>                    
-                `
+                ` 
             })
             $('#artList').html(articleList)
 
