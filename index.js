@@ -21,8 +21,8 @@
  * Algumas configurações do aplicativo.
  * Dica: você pode acrescentar novas configurações aqui se precisar.
  **/
- var apiBaseURL = 'https://frontendux.onrender.com'
- var app = {
+ const app = {
+     apiBaseURL: 'https://frontendux.onrender.com/',
      siteName: 'FrontEndeiros',
      siteSlogan: 'Programando para o futuro',
      apiContactsURL: apiBaseURL + 'contacts',
