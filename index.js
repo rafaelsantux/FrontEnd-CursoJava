@@ -57,7 +57,7 @@ function fbLogin() {
     firebase.auth().signInWithRedirect(provider)
         .then((user) => {
             popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
-            loadpage(location.pathname.split('/')[1])
+            loadpage(location.pathname.split('/')[2])
         })
         .catch((error) => {
             try {
