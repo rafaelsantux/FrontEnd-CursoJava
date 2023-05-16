@@ -4,7 +4,7 @@ $(document).ready(myContacts)
 /**
  * Função principal da página "contacts".
  **/
-function myContacts() {
+ function myContacts() {
 
     /**
      * Altera o título da página quando 'contacts' for acessada.

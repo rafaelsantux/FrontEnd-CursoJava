@@ -9,18 +9,10 @@ $(document).ready(myHome)
  *           +--> URL da API → variável 'app.apiBaseURL' em '/index.js'
  **/
 
-/**
- * Função principal da página "home".
- **/
+// Função principal da página "home".
 function myHome() {
 
     changeTitle()
-
-    /**
-     * Quando clicar em um artigo.
-     **/
-    $(document).on('click', '.art-item', loadArticle)
-    // $('.art-item').click(loadArticle)
 
     var articleList = '';
 
@@ -39,7 +31,7 @@ function myHome() {
                             <p>${art.resume}</p>
                         </div>
                     </div>                    
-                ` 
+                `
             })
             $('#artList').html(articleList)
 
@@ -52,3 +44,60 @@ function myHome() {
 
 }
 
+function getMostViewed(limit) {
+
+    var htmlOut = ''
+
+    $.get(app.apiBaseURL + 'articles', {
+        status: 'on',
+        _sort: 'views',
+        _order: 'desc',
+        _limit: limit || 5
+    })
+        .done((data) => {
+            if (data.length > 0) {
+                htmlOut = '<ul>'
+                data.forEach((item) => {
+                    htmlOut += `<li class="article" data-id="${item.id}">${item.title}</li>`
+                })
+                htmlOut += '</ul>'
+            } else {
+                htmlOut = '<p class="center">Nenhum artigo encontrado.</p>'
+            }
+
+            $('#mostVisited').html(htmlOut)
+        })
+        .fail((error) => {
+            $('#mostVisited').html('<p class="center">Nenhum artigo encontrado.</p>')
+        })
+
+}
+
+function getLastComments(limit) {
+
+    var htmlOut = ''
+
+    $.get(app.apiBaseURL + 'comments', {
+        status: 'on',
+        _sort: 'date',
+        _order: 'desc',
+        _limit: limit || 5
+    })
+        .done((data) => {
+            if (data.length > 0) {
+                htmlOut = '<ul>'
+                data.forEach((item) => {
+                    htmlOut += `<li class="article" data-id="${item.article}">${item.content.truncate(45)}</li>`
+                })
+                htmlOut += '</ul>'
+            } else {
+                htmlOut = '<p class="center">Nenhum comentário ainda.</p>'
+            }
+
+            $('#lastComments').html(htmlOut)
+        })
+        .fail((error) => {
+            $('#lastComments').html('<p class="center">Nenhum comentário ainda.</p>')
+        })
+
+}
