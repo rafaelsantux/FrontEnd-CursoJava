@@ -7,55 +7,47 @@
         Define o caminho absoluto dos documentos e links do site.
         Este camiho será alterado conforme a plataforma de hospedagem.
     -->
-    
-
+    <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site para apresentação dos conceitos de front-end">
-    <meta name="author" descrition="Rafael Santos">
+    <meta name="description" content="Site para apresentação dos conceitos de front-end do curso de Java.">
+    <meta name="author" descrition="André Luferat &lt;andre@luferat.net&gt;">
     <meta name="keywords" description="JavaScript, HTML5, CSS3, semântica, mobile-first, responsividade, api, rest">
-    
-    
+    <link rel="stylesheet" href="index.css">
+
     <!-- Carrega o CSS específico de cada página -->
     <link rel="stylesheet" href="" id="pageCSS">
-    
-    <link rel="stylesheet" href="/index.css">
-    <link rel="shortcut icon" href="/img/logo.png">
-    <title>FrontEnd</title>
 
+    <link rel="shortcut icon" href="img/favicon.alfa.png">
+    <title>FrontEndeiros</title>
 </head>
 
 <body>
 
     <!-- WRAP -->
     <div id="wrap">
-        
+
         <!-- Âncora para o topo da página → #top -->
         <a id="top"></a>
 
-        <!-- Cabeçalho-->
+        <!-- Cabeçalho usando Font Awesome como ícone -->
         <header>
-            <!-- Usando uma imagem como logotipo. -->
-            <!-- <a href="/"><img src="/img/logo.alfa.png" alt="Logotipo de FrontEnd."></a> -->
-            <!-- Usando Font Awesome como logotipo. -->
             <a href="home"><i class="fa-solid fa-laptop-code fa-fw"></i></a>
-            <h1>FrontEnd
-                <small>Programando para o futuro</small>
-            </h1>
+            <h1>FrontEndeiros<small>Programando para o futuro</small></h1>
         </header>
-            
-            <!-- Menu-->
+
+        <!-- Menu -->
         <nav>
             <!-- Item de menu -->
             <a href="home">
-                
+
                 <!-- Ícone do item do menu -->
-                <i class="fa-solid fa-house-user fa-fw"></i>
-                
+                <i class="fa-solid fa-house fa-fw"></i>
+
                 <!-- Label do item do menu -->
                 <span>Início</span>
             </a>
-              
+
             <!-- Os outros itens seguem o mesmo padrão acima -->
             <a href="contacts">
                 <i class="fa-solid fa-headset fa-fw"></i>
@@ -72,34 +64,33 @@
             </a>
         </nav>
 
-        <!-- Conteúdo principal-->
-        <main> </main>
+        <!-- Conteúdo principal -->
+        <main></main>
 
         <!-- Rodapé -->
         <footer>
 
-            <!-- Primeira linha-->
+            <!-- Primeira linha do rodapé -->
             <div class="footer-top">
-
                 <a href="home">
-                    <i class="fa-solid fa-house-user fa-fw"></i>
+                    <i class="fa-solid fa-house fa-fw"></i>
                 </a>
-                <div>&copy; 2023 Rafael Santos</div>
-
+                <div>&copy; 2023 Joca da Silva</div>
                 <a href="#top">
                     <i class="fa-solid fa-circle-up fa-fw"></i>
                 </a>
             </div>
 
-            <!-- Segunda linha-->
+            <!-- Segunda linha do rodapé -->
             <div class="footer-bottom">
 
                 <div>
-                    <h4>Redes Sociais</h4>
+                    <h4>Redes Sociais:</h4>
                     <ul>
-                        <li><a href="https://facebook.com/FrontEnd" target="_blank">
+                        <li>
+                            <a href="HTTPS://facebook.com/FrontEnd" target="_blank">
                                 <i class="fa-brands fa-square-facebook fa-fw"></i>
-                                <span>Facebook</span>
+                                <span>FaceBook</span>
                             </a>
                         </li>
                         <li>
@@ -115,21 +106,21 @@
                             </a>
                         </li>
                     </ul>
-            </div>
+                </div>
 
-            <div>
-                    <h4>Links Rapidos</h4>
+                <div>
+                    <h4>Links rápidos:</h4>
                     <ul>
                         <li>
                             <a href="about">
                                 <i class="fa-solid fa-file-code fa-fw"></i>
-                                <span>Quem somos?</span>
+                                <span>Sobre o site</span>
                             </a>
                         </li>
                         <li>
-                            <a href="about">
-                                <i class="fa-solid fa-file-code fa-fw"></i>
-                                <span>Sobre o site</span>
+                            <a href="aboutus">
+                                <i class="fa-solid fa-laptop-code fa-fw"></i>
+                                <span>Quem somos</span>
                             </a>
                         </li>
                         <li>
@@ -145,42 +136,34 @@
 
         </footer>
 
-        <hr class ="nbsp">
+        <hr class="nbsp">
+
     </div>
     <!-- Fim do WRAP -->
 
-    <!-- Barrinha lateral com bugigangas. -->
-    <div id = "gadgets">
-        <span>x</span>
-        <ul>
-            <li>
-                <a href="https://facebook.com/FrontEnd" target="_blank">
-                    <i class="fa-brands fa-square-facebook fa-fw"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/FrontEnd" target="_blank">
-                    <i class="fa-brands fa-square-twitter fa-fw"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/FrontEnd" target="_blank">
-                    <i class="fa-brands fa-square-github fa-fw"></i>
-                </a>
-            </li>
-        </ul>
-    
-        <hr class="nbsp">
+    <div id="aboutCookies">
+        <div class="cookie-modal">
+            <div class="cookie-body">
+                <div class="cookie-content">Nosso site usa
+                    <a href="https://pt.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)" target="_blank">
+                        <strong>Cookies</strong>
+                    </a> para melhorar sua experiência de navegação.
+                </div>
+                <form class="cookie-buttons">
+                    <button type="button" id="policies">Políticas de Privacidade</button>
+                    <button type="button" id="accept">Aceito todos os cookies</button>
+                </form>
+            </div>
+        </div>
     </div>
-   <!-- Fim do WRAP -->
 
-    
     <!-- Carga do JavaScript -->
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script defer src="fb.js"></script>
     <script defer src="index.js"></script>
+
 </body>
 
 </html>

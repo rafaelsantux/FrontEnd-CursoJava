@@ -1,11 +1,5 @@
-$(document).ready(myError)
+$(document).ready(myE404)
 
-/**
- * Função principal da página "e404".
- **/
-function myError() {
-    /**
-     * Altera o título da página quando 'e404' for acessada.
-     **/
-    changeTitle('Error 404')
+function myE404() {
+    changeTitle('Erro 404')
 }

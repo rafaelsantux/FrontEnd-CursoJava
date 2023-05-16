@@ -1,3 +1,4 @@
+
 /**
  * Folhas de estilo do template do site.
  **/
@@ -15,7 +16,7 @@
  /**
   * Font Awesome → Ícones e Glyphicons. 
   * Referências: https://fontawesome.com/
-  */
+  **/
  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
  
  /**
@@ -23,7 +24,7 @@
   * Referências: 
   *  • https://github.com/necolas/normalize.css
   *  • https://necolas.github.io/normalize.css/
-  */
+  **/
  @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
  
  /**********************************************/
@@ -204,6 +205,30 @@
      padding: 0 1rem;
  }
  
+ /*********/
+ /* aside */
+ /*********/
+ 
+ main aside ul {
+     font-size: 95%;
+     padding: 0;
+     padding-left: 1rem;
+ }
+ 
+ main aside ul li {
+     margin-top: .25rem;
+ }
+ 
+ main aside ul li.article {
+     color: steelblue;
+     cursor: pointer;
+ }
+ 
+ main aside ul li.article:hover {
+     color: orangered;
+     text-decoration: underline;
+ }
+ 
  /******************/
  /* Rodapé do tema */
  /******************/
@@ -270,7 +295,193 @@
  .nbsp {
      border: .25rem solid transparent;
      height: .1px;
-     margin: 0;    
+     margin: 0;
+ }
+ 
+ .center {
+     text-align: center;
+ }
+ 
+ .spin {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 4rem;
+     color: grey;
+ }
+ 
+ .responsive {
+     max-width: 100%;
+     height: auto;
+ }
+ 
+ /***************/
+ /* Formulários */
+ /***************/
+ 
+ form * {
+     font-family: inherit;
+     font-size: inherit;
+ }
+ 
+ form label {
+     display: block;
+     padding: 0 0 .25rem .25rem;
+ }
+ 
+ form input:not(input[type=radio]),
+ form textarea,
+ form button {
+     border-radius: .3rem;
+ }
+ 
+ form input:not(input[type=radio]),
+ form textarea {
+     padding: .5rem;
+     width: 100%;
+     border: 1px solid grey;
+     display: block;
+ }
+ 
+ form textarea {
+     height: 7rem;
+     resize: vertical;
+ }
+ 
+ form button {
+     border: none;
+     background-image: linear-gradient(rgb(120, 174, 219), rgb(36, 89, 132));
+     color: white;
+     padding: .5rem 1rem;
+     margin-top: .25rem;
+     cursor: pointer;
+ }
+ 
+ form button:hover {
+     background-image: linear-gradient(rgb(255, 125, 78), rgb(177, 47, 0));
+ }
+ 
+ form button:disabled {
+     background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+     pointer-events: none;
+ }
+ 
+ /*********/
+ /* popup */
+ /*********/
+ 
+ #popup {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     background-color: rgba(0, 0, 0, .5);
+     z-index: 100;
+     padding: 1rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ .popup-body {
+     margin: auto;
+     padding: .5rem .5rem .5rem 1rem;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: .3rem;
+ }
+ 
+ .popup-close {
+     font-size: 1.5rem;
+     margin-left: 1rem;
+ }
+ 
+ /************************/
+ /* Mensagens de cookies */
+ /************************/
+ 
+ #aboutCookies {
+     display: none;
+ }
+ 
+ .cookie-modal {
+     position: fixed;
+     z-index: 1000;
+     background-color: rgba(0, 0, 0, .5);
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     padding: 1.5rem;
+ }
+ 
+ .cookie-body {
+     display: table;
+     background-color: #ddd;
+     padding: .5rem;
+     border-radius: .3rem;
+     margin: auto;
+ }
+ 
+ .cookie-buttons {
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     flex-wrap: wrap;
+     padding-top: .5rem;
+ }
+ 
+ .cookie-buttons button {
+     font-size: 90%;
+     margin: .25rem;
+ }
+ 
+ /**************************/
+ /* Lista de colaboradores */
+ /**************************/
+ 
+ #usersGrid {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+ }
+ 
+ .users-grid-item {
+     display: flex;
+     flex-direction: column;
+     max-width: 150px;
+     background-color: rgb(189, 189, 189);
+     margin: 0 .25rem 1rem .25rem;
+     border-radius: .3rem;
+     cursor: pointer;
+ }
+ 
+ .users-grid-item img {
+     display: block;
+     width: 100%;
+     height: auto;
+     border-radius: .3rem .3rem 0 0;
+ }
+ 
+ .users-grid-item h4 {
+     margin: 0;
+     padding: .25rem .5rem 0 .5rem;
+ }
+ 
+ .users-grid-item small {
+     display: block;
+     font-size: 65%;
+     padding: 0 .5rem .5rem .5rem;
+     flex-grow: 1;
+ }
+ 
+ .users-grid-item ul {
+     margin: 0;
+     padding: .5rem .5rem .5rem 1.5rem;
+     font-size: 75%;
  }
  
  /**************************************************/
@@ -289,7 +500,7 @@
  
      #wrap>header h1 {
          font-size: 2rem;
-         letter-spacing: .1rem;        
+         letter-spacing: .1rem;
      }
  
      #wrap>header h1 small {

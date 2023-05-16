@@ -4,11 +4,6 @@
 
 $(document).ready(myView)
 
-// Inicializa a variável de saída.
-var article = author = authorArts = dateAuthor = cmtList = cmtForm = artId = ''
-var userData;
-
-// Função principal da página "user".
 function myView() {
 
    // Obtém o id do artigo da sessão.

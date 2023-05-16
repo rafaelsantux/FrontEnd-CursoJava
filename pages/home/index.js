@@ -1,8 +1,12 @@
 $(document).ready(myHome)
 
 /**
- * URL para obter todos os artigos ordenados pela data:
- * http://localhost:3000/articles?_sort=date&_order=desc
+ * IMPORTANTE!
+ * URL para obter todos os artigos ordenados pela data e com status ativo:
+ * http://localhost:3000/articles?_sort=date&_order=desc&status=on
+ * \---------+---------/
+ *           |
+ *           +--> URL da API → variável 'app.apiBaseURL' em '/index.js'
  **/
 
 /**
@@ -10,9 +14,6 @@ $(document).ready(myHome)
  **/
 function myHome() {
 
-    /**
-     * Altera o título da página quando 'home' for acessada.
-     **/
     changeTitle()
 
     /**
@@ -23,20 +24,15 @@ function myHome() {
 
     var articleList = '';
 
-    /**
-     * Obtém todos os artigos do site, orneados pela data, descrecente.
-     **/
-    $.get(app.apiArticlesURL)
-
-        // Armazena os artigos obtidos em "data".
+    $.get(app.apiBaseURL + 'articles', {
+        _sort: 'date',
+        _order: 'desc',
+        status: 'on'
+    })
         .done((data) => {
-
-            // Extrai cada um dos artigos para o objeto "art".
             data.forEach((art) => {
-
-                // Gera conteúdo HTML com a listagem de artigos.
                 articleList += `
-                    <div class="art-item" data-id="${art.id}">
+                    <div class="article art-item" data-id="${art.id}">
                         <img src="${art.thumbnail}" alt="${art.title}">
                         <div>
                             <h3>${art.title}</h3>
@@ -45,12 +41,13 @@ function myHome() {
                     </div>                    
                 ` 
             })
-
-            // Exibe a lista de artigos na 'home'.
             $('#artList').html(articleList)
+
+            getMostViewed()
+            getLastComments()
         })
         .fail((error) => {
-            $('#artList').html('Não encontramos nenhum artigo!!!')
+            $('#artList').html('<p class="center">Oooops! Não encontramos nenhum artigo...</p>')
         })
 
 }
