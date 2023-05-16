@@ -119,7 +119,7 @@
          .then(() => {
  
              // Recarrega a página atual após o login.
-             loadpage(location.pathname.split('/')[1])
+             loadpage(location.pathname.split('/')[2])
          })
  }
  
